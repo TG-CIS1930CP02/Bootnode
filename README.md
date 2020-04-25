@@ -1,2 +1,2 @@
-# bootnode
+# Bootnode
 Bootnode Server for Argus.
