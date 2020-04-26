@@ -17,9 +17,9 @@ import co.edu.javeriana.bootnode.repositories.NodeRepository;
 
 @RestController
 @RequestMapping("/node")
-public class NodeService {
+public class NodeController {
 	
-	private static final Logger log = LoggerFactory.getLogger(NodeService.class);
+	private static final Logger log = LoggerFactory.getLogger(NodeController.class);
 	
 	@Autowired
 	private NodeRepository nodeRepository;
