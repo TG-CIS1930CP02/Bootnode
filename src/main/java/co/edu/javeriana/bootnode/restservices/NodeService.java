@@ -1,5 +1,9 @@
 package co.edu.javeriana.bootnode.restservices;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,14 +19,17 @@ import co.edu.javeriana.bootnode.repositories.NodeRepository;
 @RequestMapping("/node")
 public class NodeService {
 	
+	private static final Logger log = LoggerFactory.getLogger(NodeService.class);
+	
 	@Autowired
 	private NodeRepository nodeRepository;
 	
 	@PostMapping
-	public void registerNode(@RequestBody String publicKey) {
-		System.out.println("test");
+	public void registerNode(HttpServletRequest request, @RequestBody String publicKey) {
 		Node node = new Node();
 		node.setPublicKey(publicKey);
+		log.info("Registration Request from: " + request.getRemoteAddr()+":"+request.getRemotePort());
+		node.setIp(request.getRemoteAddr()+":"+request.getRemotePort());
 		nodeRepository.save(node);
 	}
 	
