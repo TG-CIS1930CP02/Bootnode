@@ -1,5 +1,7 @@
 package co.edu.javeriana.bootnode.restservices;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -23,8 +25,8 @@ public class NodeController {
 	private NodeService nodeService;
 	
 	@PostMapping
-	public void registerNode(HttpServletRequest request, @RequestBody String publicKey) {
-		nodeService.createNode(request.getRemoteAddr()+":"+request.getRemotePort(), publicKey);
+	public void registerNode(HttpServletRequest request, @RequestBody Map<String, Object> registerMap) {
+		nodeService.createNode(request.getRemoteAddr()+":"+registerMap.get("port"), registerMap.get("publicKey").toString());
 	}
 	
 	@GetMapping
