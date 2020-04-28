@@ -32,3 +32,4 @@ build/
 mydatabase.trace.db
 *.db
 mydatabase.mv.db
+mydatabase.mv.db
